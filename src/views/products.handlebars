@@ -8,7 +8,6 @@
                 <p>Descripción: {{this.description}}</p>
                 <p>Precio: $ {{this.price}}</p>
                 <p>Stock: {{this.stock}}</p>
-                <a><button>Ver detalles</button></a>
                 <form method="post" action="/api/cart/{{this.cid}}/product/{{this.id}}">
                     <button type="submit">Add to cart</button>
                 </form>

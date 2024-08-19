@@ -159,14 +159,14 @@ router.get("/", (req, res) => {
     res.redirect("/login")
 });
 
-// router.get("/failLogin", (req, res) => {
-//     res.render(
-//         "login", {
-//             title: "Iniciar sesión",
-//             failLogin: true
-//         }
-//     )
-// })
+router.get("/failLogin", (req, res) => {
+    res.render(
+        "login", {
+            title: "Iniciar sesión",
+            failLogin: true
+        }
+    )
+})
 
 router.get("/register", (req, res) => {
     res.render(
