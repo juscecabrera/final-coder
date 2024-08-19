@@ -11,10 +11,8 @@
                 <form method="post" action="/api/cart/{{this.cid}}/product/{{this.id}}">
                     <button type="submit">Add to cart</button>
                 </form>
-                <hr>
             </div>
         {{/each}}
-        <hr>
         <p>Página: {{this.page}}</p>
     </div>
     <div>
@@ -30,3 +28,22 @@
     </div>
     <a href="/current">Home</a>
 </div>
+<style>
+    .box {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .products-box {
+        display: flex;
+    }
+    .product-card {
+        border: 1px solid black;
+        margin: 0 1rem;
+        padding: 1rem;
+    }
+    button {
+        margin-top: 1rem;
+    }
+</style>
