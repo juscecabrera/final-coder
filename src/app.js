@@ -13,6 +13,7 @@ import usersRouter from "./routes/users.router.js"
 import passport from "passport";
 import initializatePassport from "./config/passportConfig.js";
 import { addLogger } from "./logger.js";
+import config from "./config.js";
 
 import swaggerJsdoc from "swagger-jsdoc";
 import swaggerUiExpress from "swagger-ui-express";
@@ -20,7 +21,7 @@ import swaggerUiExpress from "swagger-ui-express";
 const app = express();
 
 //MongoDB connect
-const uri = "mongodb+srv://jusce240:omjGmRaUnnVjwVE3@cluster0.dlahfbw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = config.mongoUri;
 mongoose.connect(uri);
 
 //Handlebars
@@ -81,7 +82,7 @@ app.use("/api/sessions", usersRouter)
 
 const PORT = 8080;
 const httpServer = app.listen(PORT, () => {
-    console.log(`Servidor activo en http://localhost:${PORT}`);
+    console.log(`Servidor activo en puerto ${PORT}`);
 });
 
 const io = new Server(httpServer);

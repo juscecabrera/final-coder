@@ -4,6 +4,7 @@ import cartModel from "../dao/models/cartModel.js";
 import ticketModel from "../dao/models/ticketModel.js";
 import { auth } from "../middlewares/auth.js"
 import { authorization } from "../middlewares/authorization.js";
+import config from "../config.js";
 
 const router = Router();
 
@@ -15,7 +16,7 @@ router.get("/products/realtimeproducts", async (req, res) => {
     
     const result = await productModel.paginate({}, {page, limit, lean: true});
 
-    const baseURL = "http://localhost:8080/"
+    const baseURL = config.baseUrl
     result.title = "Productos";
     result.prevLink = result.hasPrevPage ? `${baseURL}?page=${result.prevPage}` : null;
     result.nextLink = result.hasNextPage ? `${baseURL}?page=${result.nextPage}` : null;
@@ -37,7 +38,7 @@ router.get("/products/:page", async (req, res) => {
     if(!page) page = 1;
     const result = await productModel.paginate({}, {page, limit:3, lean: true});
 
-    const baseURL = "http://localhost:8080/"
+    const baseURL = config.baseUrl
 
     result.title = "Productos";
     
@@ -90,7 +91,7 @@ router.get("/products/limit=:lim/page=:page/sort=:sort/query=:query", async (req
 
     const result = await productModel.paginate({}, {page, limit, sort, lean: true});
 
-    const baseURL = "http://localhost:8080/"
+    const baseURL = config.baseUrl
     result.title = "Productos";
     result.prevLink = result.hasPrevPage ? `${baseURL}?page=${result.prevPage}` : null;
     result.nextLink = result.hasNextPage ? `${baseURL}?page=${result.nextPage}` : null;
@@ -152,6 +153,10 @@ router.get("/login", (req, res) => {
             failLogin: false
         }
     )
+});
+
+router.get("/", (req, res) => {
+    res.redirect("/login")
 });
 
 // router.get("/failLogin", (req, res) => {

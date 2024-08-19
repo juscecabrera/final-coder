@@ -1,8 +1,9 @@
 import { expect } from 'chai';
 import supertest from "supertest";
+import config from '../src/config';
 
 
-const requester = supertest("http://localhost:8080")
+const requester = supertest(config.baseUrl)
 
 describe("Test Integración", function () {
     let cartID;

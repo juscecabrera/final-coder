@@ -14,7 +14,7 @@ const initializatePassport = () => {
         {
             clientID: config.clientId,
             clientSecret: config.secretId,
-            callbackURL: "http://localhost:8080/api/sessions/githubcallback"
+            callbackURL: config.baseUrl + "api/sessions/githubcallback"
         },
         async (accessToken, refreshToken, profile, done) => {
             try {
